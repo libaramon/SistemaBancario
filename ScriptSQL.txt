@@ -1,0 +1,17 @@
+CREATE DATABASE BancoDB;
+GO
+
+USE BancoDB;
+
+CREATE TABLE Cliente (
+    Id INT PRIMARY KEY IDENTITY,
+    Nombre NVARCHAR(100),
+    Documento NVARCHAR(50)
+);
+
+CREATE TABLE Cuenta (
+    Id INT PRIMARY KEY IDENTITY,
+    NumeroCuenta NVARCHAR(50),
+    Saldo FLOAT,
+    ClienteId INT
+);

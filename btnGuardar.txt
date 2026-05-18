@@ -1,0 +1,21 @@
+private void btnGuardar_Click(object sender, EventArgs e)
+{
+    Cliente cliente = new Cliente(
+        txtNombre.Text,
+        txtDocumento.Text
+    );
+
+    Cuenta cuenta = new Cuenta(
+        txtCuenta.Text,
+        cliente
+    );
+
+    ClienteDAO clienteDAO = new ClienteDAO();
+
+    clienteDAO.Guardar(
+        cliente.Nombre,
+        cliente.Documento
+    );
+
+    MessageBox.Show("Datos guardados");
+}
