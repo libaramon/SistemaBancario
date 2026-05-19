@@ -1,0 +1,55 @@
+using System;
+
+namespace EjercicioPracticoSistemaBancario
+{
+    public class Cuenta
+    {
+        // Propiedad de solo lectura
+        public string NumeroCuenta { get; }
+
+        // Solo la clase puede modificar el saldo
+        public double Saldo { get; private set; }
+
+        // Relación con Cliente
+        public Cliente Titular { get; }
+
+        // Constructor
+        public Cuenta(string numeroCuenta, Cliente titular)
+        {
+            NumeroCuenta = numeroCuenta;
+            Titular = titular;
+            Saldo = 0;
+        }
+
+        // Método Depositar
+        public string Depositar(double monto)
+        {
+            if (monto <= 0)
+            {
+                return "El monto debe ser mayor a cero.";
+            }
+
+            Saldo += monto;
+
+            return $"Depósito exitoso. Nuevo saldo: {Saldo:C2}";
+        }
+
+        // Método Retirar
+        public string Retirar(double monto)
+        {
+            if (monto <= 0)
+            {
+                return "El monto debe ser mayor a cero.";
+            }
+
+            if (monto > Saldo)
+            {
+                return "Fondos insuficientes.";
+            }
+
+            Saldo -= monto;
+
+            return $"Retiro exitoso. Nuevo saldo: {Saldo:C2}";
+        }
+    }
+}
