@@ -1,0 +1,65 @@
+using System;
+using System.Windows.Forms;
+
+namespace EjercicioPracticoSistemaBancario
+{
+    public partial class Form1 : Form
+    {
+        // Variable global
+        Cuenta cuenta;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // Crear cliente y cuenta
+        private void btnCrearCuenta_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new Cliente(
+                txtNombre.Text,
+                txtDocumento.Text
+            );
+
+            cuenta = new Cuenta(
+                txtNumeroCuenta.Text,
+                cliente
+            );
+
+            lblInfo.Text =
+                "Cliente: " + cuenta.Titular.Nombre +
+                "\nDocumento: " + cuenta.Titular.Documento +
+                "\nCuenta: " + cuenta.NumeroCuenta;
+
+            lblSaldo.Text = "Saldo: $0.00";
+
+            MessageBox.Show("Cuenta creada correctamente");
+        }
+
+        // Depositar dinero
+        private void btnDepositar_Click(object sender, EventArgs e)
+        {
+            double monto = Convert.ToDouble(txtMonto.Text);
+
+            string mensaje = cuenta.Depositar(monto);
+
+            lblSaldo.Text =
+                "Saldo: " + cuenta.Saldo.ToString("C2");
+
+            MessageBox.Show(mensaje);
+        }
+
+        // Retirar dinero
+        private void btnRetirar_Click(object sender, EventArgs e)
+        {
+            double monto = Convert.ToDouble(txtMonto.Text);
+
+            string mensaje = cuenta.Retirar(monto);
+
+            lblSaldo.Text =
+                "Saldo: " + cuenta.Saldo.ToString("C2");
+
+            MessageBox.Show(mensaje);
+        }
+    }
+}
