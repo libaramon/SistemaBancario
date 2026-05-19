@@ -1,0 +1,17 @@
+Nombre:          [____________]
+
+Documento:       [____________]
+
+Número Cuenta:   [____________]
+
+Monto:           [____________]
+
+ [Crear Cuenta]
+
+ [Depositar]   [Retirar]
+
+Información:
+______________________
+
+Saldo:
+______________________
